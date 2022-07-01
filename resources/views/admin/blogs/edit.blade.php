@@ -27,7 +27,11 @@
                     
                     <img src="/storage/{{ $blog->thumbnail }}" width="200px" height="100px" alt="">
                     
-                    <x-form.select :categories="$categories"  :blog="$blog"></x-form.select>
+                    <select name="category_id" id="Category" class="form-control">
+                        @foreach ($categories as $category)
+                        <option {{ $category->id== old('category_id',$blog->category->id) ? 'selected' : '' }} value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
                     <div class="d-flex justify-content-start">
                         <button class="btn btn-primary" type="submit">Update</button>
                     </div>
